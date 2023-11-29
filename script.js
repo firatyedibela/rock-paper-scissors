@@ -1,7 +1,6 @@
-const playerSelection = 'rock';
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection));
-
+function getPlayerChoice() {
+  return prompt('Your move: ');
+}
 
 function getComputerChoice() {
   const number = Math.random();
@@ -25,29 +24,29 @@ function playRound(playerSelection, computerSelection) {
       result = 'Tie';
     }
     else if (computerSelection === 'paper') {
-      result = `You lose! ${computerSelection} beats ${playerSelection}`;
+      result = `You lose the round! ${computerSelection} beats ${playerSelection}`;
     }
     else if (computerSelection === 'scissors') {
-      result = `You win! ${playerSelection} beats ${computerSelection}`;
+      result = `You win the round! ${playerSelection} beats ${computerSelection}`;
     }
   }
   else if (playerSelection === 'paper') {
     if (computerSelection === 'rock') {
-      result = `You win! ${playerSelection} beats ${computerSelection}`;
+      result = `You win the round! ${playerSelection} beats ${computerSelection}`;
     }
     else if (computerSelection === 'paper') {
       result = 'Tie';
     }
     else if (computerSelection === 'scissors') {
-      result = `You lose! ${computerSelection} beats ${playerSelection}`;
+      result = `You lose the round! ${computerSelection} beats ${playerSelection}`;
     }
   }
   else if (playerSelection === 'scissors') {
     if (computerSelection === 'rock') {
-      result = `You lose! ${computerSelection} beats ${playerSelection}`;
+      result = `You lose the round! ${computerSelection} beats ${playerSelection}`;
     }
     else if (computerSelection === 'paper') {
-      result = `You win! ${playerSelection} beats ${computerSelection}`;
+      result = `You win the round! ${playerSelection} beats ${computerSelection}`;
     }
     else if (computerSelection === 'scissors') {
       result = 'Tie';
