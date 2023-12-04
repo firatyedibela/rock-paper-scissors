@@ -21,7 +21,9 @@ function playRound(playerSelection, computerSelection) {
 
   if (playerSelection === 'rock') {
     if (computerSelection === 'rock') {
-      result = 'Tie';
+      result = 'Tie! Pick a move again.';
+      console.log(result);
+      result = playRound(getPlayerChoice(), getComputerChoice());
     }
     else if (computerSelection === 'paper') {
       result = `You lose the round! ${computerSelection} beats ${playerSelection}`;
@@ -35,7 +37,9 @@ function playRound(playerSelection, computerSelection) {
       result = `You win the round! ${playerSelection} beats ${computerSelection}`;
     }
     else if (computerSelection === 'paper') {
-      result = 'Tie';
+      result = 'Tie! Pick a move again.';
+      console.log(result);
+      result = playRound(getPlayerChoice(), getComputerChoice());
     }
     else if (computerSelection === 'scissors') {
       result = `You lose the round! ${computerSelection} beats ${playerSelection}`;
@@ -49,9 +53,18 @@ function playRound(playerSelection, computerSelection) {
       result = `You win the round! ${playerSelection} beats ${computerSelection}`;
     }
     else if (computerSelection === 'scissors') {
-      result = 'Tie';
+      result = 'Tie! Pick a move again.';
+      console.log(result);
+      result = playRound(getPlayerChoice(), getComputerChoice());
     }
   }
 
   return result;
 }
+
+let playerChoice = getPlayerChoice();
+
+let computerChoice = getComputerChoice();
+
+result = playRound(playerChoice, computerChoice);
+console.log(result);
