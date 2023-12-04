@@ -67,9 +67,39 @@ function playRound(playerSelection, computerSelection) {
   return result;
 }
 
-let playerChoice = getPlayerChoice();
+function playGame() {
+  let computerScore = 0;
+  let playerScore = 0;
 
-let computerChoice = getComputerChoice();
+  for (let i = 0; i < 5; i++) {
+    let result = 0;
+    let playerChoice = getPlayerChoice();
+    let computerChoice = getComputerChoice();
+    result =  playRound(playerChoice, computerChoice);
 
-result = playRound(playerChoice, computerChoice);
-console.log(result);
+    if (result === 0) {
+      computerScore++;
+    }
+    else {
+      playerScore++;
+    }
+
+    console.log(`You ${playerScore} - ${computerScore} Computer`);
+  }
+
+  // Declare final scores, compare scores and declare winner
+  console.log(`###FINAL SCORE###
+  You: ${playerScore}
+  Computer: ${computerScore}
+  `);
+
+  if (computerScore > playerScore) {
+    console.log('You Lose! Try again.');
+  }
+  else {
+    console.log('You win! Congratulations!');
+  }
+
+}
+
+playGame();
