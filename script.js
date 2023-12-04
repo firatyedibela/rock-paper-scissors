@@ -26,15 +26,18 @@ function playRound(playerSelection, computerSelection) {
       result = playRound(getPlayerChoice(), getComputerChoice());
     }
     else if (computerSelection === 'paper') {
-      result = `You lose the round! ${computerSelection} beats ${playerSelection}`;
+      console.log(`You lose the round! ${computerSelection} beats ${playerSelection}`);
+      result = 0;
     }
     else if (computerSelection === 'scissors') {
-      result = `You win the round! ${playerSelection} beats ${computerSelection}`;
+      console.log(`You win the round! ${playerSelection} beats ${computerSelection}`);
+      result = 1;
     }
   }
   else if (playerSelection === 'paper') {
     if (computerSelection === 'rock') {
-      result = `You win the round! ${playerSelection} beats ${computerSelection}`;
+      console.log(`You win the round! ${playerSelection} beats ${computerSelection}`);
+      result = 1;
     }
     else if (computerSelection === 'paper') {
       result = 'Tie! Pick a move again.';
@@ -42,19 +45,21 @@ function playRound(playerSelection, computerSelection) {
       result = playRound(getPlayerChoice(), getComputerChoice());
     }
     else if (computerSelection === 'scissors') {
-      result = `You lose the round! ${computerSelection} beats ${playerSelection}`;
+      console.log(`You lose the round! ${computerSelection} beats ${playerSelection}`);
+      result = 0;
     }
   }
   else if (playerSelection === 'scissors') {
     if (computerSelection === 'rock') {
-      result = `You lose the round! ${computerSelection} beats ${playerSelection}`;
+      console.log(`You lose the round! ${computerSelection} beats ${playerSelection}`);
+      result = 0;
     }
     else if (computerSelection === 'paper') {
-      result = `You win the round! ${playerSelection} beats ${computerSelection}`;
+      console.log(`You win the round! ${playerSelection} beats ${computerSelection}`);
+      result = 1;
     }
     else if (computerSelection === 'scissors') {
-      result = 'Tie! Pick a move again.';
-      console.log(result);
+      console.log('Tie! Pick a move again.');
       result = playRound(getPlayerChoice(), getComputerChoice());
     }
   }
