@@ -27,13 +27,12 @@ function getComputerChoice() {
   }
 }
 
-function playRound(playerSelection, computerSelection) {
-  playerSelection = playerSelection.toLowerCase();
+function playRound(playerSelection) {
   let result = '';
+  let computerSelection = getComputerChoice();
 
   if (playerSelection === 'rock') {
     if (computerSelection === 'rock') {
-      result = 'Tie! Pick a move again.';
       console.log(result);
       result = playRound(getPlayerChoice(), getComputerChoice());
     }
@@ -54,7 +53,6 @@ function playRound(playerSelection, computerSelection) {
     else if (computerSelection === 'paper') {
       result = 'Tie! Pick a move again.';
       console.log(result);
-      result = playRound(getPlayerChoice(), getComputerChoice());
     }
     else if (computerSelection === 'scissors') {
       console.log(`You lose the round! ${computerSelection} beats ${playerSelection}`);
@@ -72,45 +70,7 @@ function playRound(playerSelection, computerSelection) {
     }
     else if (computerSelection === 'scissors') {
       console.log('Tie! Pick a move again.');
-      result = playRound(getPlayerChoice(), getComputerChoice());
     }
   }
-
   return result;
 }
-
-function playGame() {
-  let computerScore = 0;
-  let playerScore = 0;
-
-  for (let i = 0; i < 5; i++) {
-    let result = 0;
-    let playerChoice = getPlayerChoice();
-    let computerChoice = getComputerChoice();
-    result =  playRound(playerChoice, computerChoice);
-
-    if (result === 0) {
-      computerScore++;
-    }
-    else {
-      playerScore++;
-    }
-
-    console.log(`You ${playerScore} - ${computerScore} Computer`);
-  }
-
-  // Declare final scores, compare scores and declare winner
-  console.log(`###FINAL SCORE###
-  You: ${playerScore}
-  Computer: ${computerScore}
-  `);
-
-  if (computerScore > playerScore) {
-    console.log('You Lose! Try again.');
-  }
-  else {
-    console.log('You win! Congratulations!');
-  }
-}
-
-playGame();
