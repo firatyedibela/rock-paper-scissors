@@ -1,6 +1,18 @@
-function getPlayerChoice() {
-  return prompt('Your move: ');
-}
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+
+rockBtn.addEventListener('click', (event) => {
+  playRound(event.target.id);
+});
+
+paperBtn.addEventListener('click', (event) => {
+  playRound(event.target.id);
+});
+
+scissorsBtn.addEventListener('click', (event) => {
+  playRound(event.target.id);
+});
 
 function getComputerChoice() {
   const number = Math.random();
@@ -99,7 +111,6 @@ function playGame() {
   else {
     console.log('You win! Congratulations!');
   }
-
 }
 
 playGame();
