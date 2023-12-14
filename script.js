@@ -18,6 +18,24 @@ scissorsBtn.addEventListener('click', (event) => {
   playRound(event.target.id);
 });
 
+function declareWinner() {
+  if (playerScore === 5) {
+    alert(`You won!\nYou: ${playerScore}\nComputer: ${computerScore}`);
+    resetScores();
+  }
+  else if (computerScore === 5) {
+    alert(`You lose!\nYou: ${playerScore}\nComputer: ${computerScore}`);
+    resetScores();
+  }
+}; 
+
+function resetScores() {
+  playerScore = 0;
+  computerScore = 0;
+  roundWinnerDiv.innerText = '';
+  scoreDiv.innerText = '';
+}
+
 function getComputerChoice() {
   const number = Math.random();
   if (number < 0.3) {
@@ -74,4 +92,5 @@ function playRound(playerSelection) {
     }
   }
   scoreDiv.innerText = `You ${playerScore} - ${computerScore} Computer`;
+  declareWinner();
 }
