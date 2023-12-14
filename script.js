@@ -1,7 +1,10 @@
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
+const roundWinnerDiv = document.querySelector('#round-winner');
 const scoreDiv = document.querySelector('#score');
+let playerScore = 0;
+let computerScore = 0;
 
 rockBtn.addEventListener('click', (event) => {
   playRound(event.target.id);
@@ -33,36 +36,42 @@ function playRound(playerSelection) {
 
   if (playerSelection === 'rock') {
     if (computerSelection === 'rock') {
-      scoreDiv.innerText = 'Tie. Pick a move again.';
+      roundWinnerDiv.innerText = 'Tie. Pick a move again.';
     }
     else if (computerSelection === 'paper') {
-      scoreDiv.innerText = `You lose the round! ${computerSelection} beats ${playerSelection}`;
-      
+      roundWinnerDiv.innerText = `You lose the round! ${computerSelection} beats ${playerSelection}`;
+      computerScore++;     
     }
     else if (computerSelection === 'scissors') {
-      scoreDiv.innerText = `You win the round! ${playerSelection} beats ${computerSelection}`;
+      roundWinnerDiv.innerText = `You win the round! ${playerSelection} beats ${computerSelection}`;
+      playerScore++;
     }
   }
   else if (playerSelection === 'paper') {
     if (computerSelection === 'rock') {
-      scoreDiv.innerText = `You win the round! ${playerSelection} beats ${computerSelection}`;
+      roundWinnerDiv.innerText = `You win the round! ${playerSelection} beats ${computerSelection}`;
+      playerScore++;
     }
     else if (computerSelection === 'paper') {
-      scoreDiv.innerText = 'Tie. Pick a move again.';
+      roundWinnerDiv.innerText = 'Tie. Pick a move again.';
     }
     else if (computerSelection === 'scissors') {
-      scoreDiv.innerText = `You lose the round! ${computerSelection} beats ${playerSelection}`;
+      roundWinnerDiv.innerText = `You lose the round! ${computerSelection} beats ${playerSelection}`;
+      computerScore++;
     }
   }
   else if (playerSelection === 'scissors') {
     if (computerSelection === 'rock') {
-      scoreDiv.innerText = `You lose the round! ${computerSelection} beats ${playerSelection}`;
+      roundWinnerDiv.innerText = `You lose the round! ${computerSelection} beats ${playerSelection}`;
+      computerScore++;
     }
     else if (computerSelection === 'paper') {
-      scoreDiv.innerText = `You win the round! ${playerSelection} beats ${computerSelection}`;
+      roundWinnerDiv.innerText = `You win the round! ${playerSelection} beats ${computerSelection}`;
+      playerScore++;
     }
     else if (computerSelection === 'scissors') {
-      scoreDiv.innerText = 'Tie. Pick a move again.';
+      roundWinnerDiv.innerText = 'Tie. Pick a move again.';
     }
   }
+  scoreDiv.innerText = `You ${playerScore} - ${computerScore} Computer`;
 }
