@@ -1,0 +1,41 @@
+body {
+  background-color: yellow;
+}
+
+#wrapper {
+  margin-top: 48px;
+}
+
+#button-wrapper {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  gap: 20px;
+}
+
+button {
+  width: 165px;
+  height: 60px;
+  font-size: 24px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+#rock {
+  background-color: brown;
+}
+
+#paper {
+  background-color: yellowgreen
+}
+
+#scissors {
+  background-color: green;
+}
+
+#rock:hover,
+#paper:hover,
+#scissors:hover {
+  box-shadow: 0px 0px 10px;
+}
