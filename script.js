@@ -28,16 +28,19 @@ scissorsBtn.addEventListener('click', (event) => {
 function declareWinner() {
   if (youScore === 5) {
     console.log(`You won!\nYou: ${youScore}\nComputer: ${computerScore}`);
-    resetScores();
     youDiv.style.backgroundColor = 'Green';
     computerDiv.style.backgroundColor = 'Red';
+    renderReplayButton();
+    disableMoveButtons();
   }
   else if (computerScore === 5) {
     console.log(`You lose!\nYou: ${youScore}\nComputer: ${computerScore}`);
-    resetScores();
     youDiv.style.backgroundColor = 'Red';
-    computerDiv.style.backgroundColor = 'Green';   
+    computerDiv.style.backgroundColor = 'Green'; 
+    renderReplayButton();
+    disableMoveButtons();
   }
+  
 }; 
 
 function resetScores() {
@@ -60,8 +63,7 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection) {
-  youDiv.style.backgroundColor = 'Black';
-  computerDiv.style.backgroundColor = 'Black';  
+   
   let computerSelection = getComputerChoice();
 
   if (playerSelection === 'rock') {
@@ -111,3 +113,35 @@ function renderScores() {
   youScoreDiv.textContent = youScore;
   computerScoreDiv.textContent = computerScore;
 };
+
+function renderReplayButton() {
+  const replayButton = document.createElement('button');
+  replayButton.textContent = 'Play Again';
+  replayButton.id = 'replay-button';
+
+  replayButton.addEventListener('click', () => {
+    enableMoveButtons();
+    resetScores();
+    renderScores();
+    youDiv.style.backgroundColor = 'Black';
+    computerDiv.style.backgroundColor = 'Black'; 
+    replayButton.remove();
+    
+  });
+
+  document.querySelector('#replay-wrapper')
+    .appendChild(replayButton);
+}
+
+function disableMoveButtons() {
+  rockBtn.disabled = true;
+  paperBtn.disabled = true;
+  scissorsBtn.disabled = true;
+}
+
+function enableMoveButtons() {
+  rockBtn.disabled = false;
+  paperBtn.disabled = false;
+  scissorsBtn.disabled = false;
+}
+
