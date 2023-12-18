@@ -2,9 +2,16 @@ const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
 const roundWinnerDiv = document.querySelector('#round-winner');
-const scoreDiv = document.querySelector('#score');
-let playerScore = 0;
+const youText = document.querySelector('#you-text');
+const scoreText = document.querySelector('#score-text');
+const computerText = document.querySelector('#computer-text');
+let youScoreDiv = document.querySelector('#you-score');
+let computerScoreDiv = document.querySelector('#computer-score');
+const youDiv = document.querySelector('#you');
+const computerDiv = document.querySelector('#computer');
+let youScore = 0;
 let computerScore = 0;
+
 
 rockBtn.addEventListener('click', (event) => {
   playRound(event.target.id);
@@ -19,21 +26,24 @@ scissorsBtn.addEventListener('click', (event) => {
 });
 
 function declareWinner() {
-  if (playerScore === 5) {
-    alert(`You won!\nYou: ${playerScore}\nComputer: ${computerScore}`);
+  if (youScore === 5) {
+    console.log(`You won!\nYou: ${youScore}\nComputer: ${computerScore}`);
     resetScores();
+    youDiv.style.backgroundColor = 'Green';
+    computerDiv.style.backgroundColor = 'Red';
   }
   else if (computerScore === 5) {
-    alert(`You lose!\nYou: ${playerScore}\nComputer: ${computerScore}`);
+    console.log(`You lose!\nYou: ${youScore}\nComputer: ${computerScore}`);
     resetScores();
+    youDiv.style.backgroundColor = 'Red';
+    computerDiv.style.backgroundColor = 'Green';   
   }
 }; 
 
 function resetScores() {
-  playerScore = 0;
+  youScore = 0;
   computerScore = 0;
-  roundWinnerDiv.innerText = '';
-  scoreDiv.innerText = '';
+  roundWinnerDiv.textContent = ''; 
 }
 
 function getComputerChoice() {
@@ -50,6 +60,8 @@ function getComputerChoice() {
 }
 
 function playRound(playerSelection) {
+  youDiv.style.backgroundColor = 'Black';
+  computerDiv.style.backgroundColor = 'Black';  
   let computerSelection = getComputerChoice();
 
   if (playerSelection === 'rock') {
@@ -62,13 +74,13 @@ function playRound(playerSelection) {
     }
     else if (computerSelection === 'scissors') {
       roundWinnerDiv.innerText = `You win the round! ${playerSelection} beats ${computerSelection}`;
-      playerScore++;
+      youScore++;
     }
   }
   else if (playerSelection === 'paper') {
     if (computerSelection === 'rock') {
       roundWinnerDiv.innerText = `You win the round! ${playerSelection} beats ${computerSelection}`;
-      playerScore++;
+      youScore++;
     }
     else if (computerSelection === 'paper') {
       roundWinnerDiv.innerText = 'Tie. Pick a move again.';
@@ -85,12 +97,17 @@ function playRound(playerSelection) {
     }
     else if (computerSelection === 'paper') {
       roundWinnerDiv.innerText = `You win the round! ${playerSelection} beats ${computerSelection}`;
-      playerScore++;
+      youScore++;
     }
     else if (computerSelection === 'scissors') {
       roundWinnerDiv.innerText = 'Tie. Pick a move again.';
     }
   }
-  scoreDiv.innerText = `You ${playerScore} - ${computerScore} Computer`;
+  renderScores();
   declareWinner();
 }
+
+function renderScores() {
+  youScoreDiv.textContent = youScore;
+  computerScoreDiv.textContent = computerScore;
+};
