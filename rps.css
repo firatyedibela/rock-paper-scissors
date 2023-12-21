@@ -64,7 +64,7 @@ button {
 #you,
 #computer {
   width: 175px;
-  color: white;
+  color: rgb(255, 255, 255);
   background-color: black;
   border: 8px rgb(145, 62, 145) solid;
 }
@@ -73,6 +73,30 @@ button {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+}
+
+#replay-button {
+  border: 3px solid;
+  font-size: 45px;
+  width: auto;
+  height: auto;
+  background-color: gray;
+  color: white;
+  border: rgb(38, 35, 100);
+  padding: 10px 36px;
+}
+
+#replay-button:hover {
+  box-shadow: 0px 0px 10px;
+  border: solid 3px;
+}
+
+#winner {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 54px;
+  color: rgb(38, 35, 100);
+  font-weight: bold;
 }
 
 
