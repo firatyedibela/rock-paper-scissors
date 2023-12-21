@@ -11,6 +11,7 @@ const youDiv = document.querySelector('#you');
 const computerDiv = document.querySelector('#computer');
 let youScore = 0;
 let computerScore = 0;
+let winner = document.querySelector('#winner');
 
 
 rockBtn.addEventListener('click', (event) => {
@@ -28,6 +29,7 @@ scissorsBtn.addEventListener('click', (event) => {
 function declareWinner() {
   if (youScore === 5) {
     console.log(`You won!\nYou: ${youScore}\nComputer: ${computerScore}`);
+    winner.textContent = 'You Win!';
     youDiv.style.backgroundColor = 'Green';
     computerDiv.style.backgroundColor = 'Red';
     renderReplayButton();
@@ -35,12 +37,12 @@ function declareWinner() {
   }
   else if (computerScore === 5) {
     console.log(`You lose!\nYou: ${youScore}\nComputer: ${computerScore}`);
+    winner.textContent = 'You Lose';
     youDiv.style.backgroundColor = 'Red';
     computerDiv.style.backgroundColor = 'Green'; 
     renderReplayButton();
     disableMoveButtons();
-  }
-  
+  } 
 }; 
 
 function resetScores() {
@@ -123,10 +125,10 @@ function renderReplayButton() {
     enableMoveButtons();
     resetScores();
     renderScores();
+    winner.innerText = '';
     youDiv.style.backgroundColor = 'Black';
     computerDiv.style.backgroundColor = 'Black'; 
     replayButton.remove();
-    
   });
 
   document.querySelector('#replay-wrapper')
